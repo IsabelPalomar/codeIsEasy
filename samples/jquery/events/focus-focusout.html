@@ -1,0 +1,21 @@
+<html lang="es">
+<head>
+	<meta charset="UTF-8"/>
+	<title>Sample</title>
+	<script src="http://code.jquery.com/jquery-1.8.3.min.js" type="text/javascript" language="javascript"></script>
+	<script type="text/javascript" language="javascript">
+	$(function(){
+		$('#buscar').focus(function(){
+			$("#buscar").stop().animate({width:"200px"},1000);
+		}).focusout(function(){
+			$("#buscar").stop().animate({width:"100px"},1000);
+		})	
+	});
+	</script>
+</head>
+<body>
+<div align="right">
+	<input type="search" id="buscar" style="width:100px;"/>
+</div>
+</body>
+</html>
