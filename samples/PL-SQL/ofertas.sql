@@ -44,7 +44,7 @@ select r.* from (
 ) r where o_rownum > 0
 
 /**
-/*   Obtain personalized and suggested offers -sample---------------------------------------------------------------------------------
+*   Obtain personalized and suggested offers -sample---------------------------------------------------------------------------------
 */
 
 SELECT REGISTROS.*
@@ -75,7 +75,7 @@ FROM (
 WHERE O_ROWNUM > 0 -- PI_NUM_REG_INI
 
 /*
-/* Obtain suggested and personalized offers of a specific customer -------------------------------------------------------------------------
+* Obtain suggested and personalized offers of a specific customer -------------------------------------------------------------------------
 */
 
 SELECT  COUNT(*)  as total
@@ -133,7 +133,7 @@ SELECT  COUNT(*)  as total
 	ORDER BY FECHA_ACEPTACION DESC;
 
 /**
-/* Obtain total number of taken offers ---------------------------------------------------------------------------------------------------------
+* Obtain total number of taken offers ---------------------------------------------------------------------------------------------------------
 */
 
 
@@ -162,7 +162,7 @@ ORDER BY FECHA_ACEPTACION DESC;
 
 
 /**
-/* Obtain offer detail  -- new sample---------------------------------------------------------------------------------------------------------
+* Obtain offer detail  -- new sample---------------------------------------------------------------------------------------------------------
 */
 
 
