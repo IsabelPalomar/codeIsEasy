@@ -44,7 +44,7 @@ select r.* from (
 ) r where o_rownum > 0
 
 /**
-/*   Obtain personalized and suggested offers --- new sample ---------------------------------------------------------------------------------
+/*   Obtain personalized and suggested offers -sample---------------------------------------------------------------------------------
 */
 
 SELECT REGISTROS.*
