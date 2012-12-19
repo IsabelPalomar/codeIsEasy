@@ -80,6 +80,8 @@ and open the template in the editor.
         <script type="text/javascript">
             url = 'http://mediosuag.mx/feed';
             counter = 0;
+            articles = "";
+            arrayArticles = new Array();
             
             $.ajax({
                     url: document.location.protocol + '//ajax.googleapis.com/ajax/services/feed/load?v=1.0&num=10&callback=?&q=' + encodeURIComponent(url),
@@ -121,8 +123,21 @@ and open the template in the editor.
                                                        //get the link
                                                        link  =  value.link;
 
+                                                       articles = articles + "<article id='article-" + counter + "' class='rss-content'><span class='article-title'><br>" + articleTitle + "</span><img " +  imageAttr + " /> <strong> " +  title +  "</strong> <p>" + description + "</p> <a href='" +  link + "' >Más Información</a>  </article>";
+
+                                                       if(counter == 1){
+                                                          countGroups ++;
+                                                       }
+
                                                        if(counter <= 3){
-                                                            $('#feeds-content').append("<article id='article-" + counter + "' class='rss-content'><span class='article-title'><br>" + articleTitle + "</span><img " +  imageAttr + " /> <strong> " +  title +  "</strong> <p>" + description + "</p> <a href='" +  link + "' >Más Información</a>  </article>");
+                                                       }
+                                                       if(counter == 3){
+                                                          countGroups ++;
+                                                          counter = 0;
+                                                          articles = "";
+                                                       }
+                                                       if(countGroups == 1){
+                                                          appendArticles(articles);
                                                        }
 
                                             });   //end each
@@ -131,22 +146,30 @@ and open the template in the editor.
                           console.log('error trying read rss');
                     }
                 });
+
+                function appendArticles(articles){
+                  $('#feeds-content').append(articles);
+
+                }
+
         </script>
     
     </head>
     <body>
-         <div class="feeds-temporal">
-            <div class="feeds-tittle" >
-                <span>Noticias UAG</span>
-                <a class="feeds-right" >Ir a Medios UAG</a>
-            </div>
-            <div class="feeds-content" id="feeds-content"></div>
-            <a class="horizontal prev" href="#">
-                <span> &lt; </span>
-            </a>
-             <a class="horizontal next" href="#">
-                <span> > </span>
-            </a>
+         <div class="feeds-temporal span9">
+            <div class="row">
+                <div class="feeds-tittle" >
+                    <span class="span3">Noticias UAG</span>
+                    <a class="feeds-right" >Ir a Medios UAG</a>
+                </div>
+                <div class="feeds-content span9" id="feeds-content"></div>
+                <a class="horizontal prev" href="#">
+                    <span> &lt; </span>
+                </a>
+                 <a class="horizontal next" href="#">
+                    <span> > </span>
+                </a>
+          </div>
         </div>
     </body>   
 </html>
