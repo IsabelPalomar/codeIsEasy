@@ -81,13 +81,13 @@ and open the template in the editor.
             url = 'http://mediosuag.mx/feed';
             counter = 0;
             
-            $.ajax({
+            jQuery.ajax({
                     url: document.location.protocol + '//ajax.googleapis.com/ajax/services/feed/load?v=1.0&num=10&callback=?&q=' + encodeURIComponent(url),
                     dataType: 'json',
                     success: function(data) {
                                                 //read each rss 
                                                 countGroups = 0;
-                                                $.each(data.responseData.feed.entries, function(key, value){
+                                                jQuery.each(data.responseData.feed.entries, function(key, value){
                                                       counter++;
 
                                                       //get the formated date
@@ -122,7 +122,7 @@ and open the template in the editor.
                                                        link  =  value.link;
 
                                                        if(counter <= 3){
-                                                            $('#feeds-content').append("<article id='article-" + counter + "' class='rss-content'><span class='article-title'><br>" + articleTitle + "</span><img " +  imageAttr + " /> <strong> " +  title +  "</strong> <p>" + description + "</p> <a href='" +  link + "' >Más Información</a>  </article>");
+                                                            jQuery('#feeds-content').append("<article id='article-" + counter + "' class='rss-content'><span class='article-title'><br>" + articleTitle + "</span><img " +  imageAttr + " /> <strong> " +  title +  "</strong> <p>" + description + "</p> <a href='" +  link + "' >Más Información</a>  </article>");
                                                        }
 
                                             });   //end each
@@ -135,18 +135,20 @@ and open the template in the editor.
     
     </head>
     <body>
-         <div class="feeds-temporal">
-            <div class="feeds-tittle" >
-                <span>Noticias UAG</span>
-                <a class="feeds-right" >Ir a Medios UAG</a>
-            </div>
-            <div class="feeds-content" id="feeds-content"></div>
-            <a class="horizontal prev" href="#">
-                <span> &lt; </span>
-            </a>
-             <a class="horizontal next" href="#">
-                <span> > </span>
-            </a>
+         <div class="feeds-temporal span9">
+            <div class="row">
+                <div class="feeds-tittle" >
+                    <span class="span3">Noticias UAG</span>
+                    <a class="feeds-right" >Ir a Medios UAG</a>
+                </div>
+                <div class="feeds-content span9" id="feeds-content"></div>
+                <a class="horizontal prev" href="#">
+                    <span> &lt; </span>
+                </a>
+                 <a class="horizontal next" href="#">
+                    <span> > </span>
+                </a>
+          </div>
         </div>
     </body>   
 </html>
