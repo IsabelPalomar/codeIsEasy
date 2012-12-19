@@ -1,0 +1,147 @@
+<!--
+To change this template, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html>
+    <head>
+        <title></title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+         <style>
+            .feeds-temporal{
+                width: 100%;
+                height: 350px;
+                background-color: #EAECEE;
+                font-family: 'Lato';
+            }
+             .feeds-tittle{
+                margin: 0;
+                padding: 10px;               
+                text-shadow: 0px 0px 3px #300;
+                color: white;
+                font-size: 17.5px;
+                
+            }
+            .feeds-tittle{
+                background-color: #7E191B;
+            }
+            .feeds-right{
+                float: right;
+                color: #F8971D;
+            }
+            .rss-content{
+                width: 25%;
+                float:left;
+                margin-left: 50px;
+            }
+            .article-title{
+                font-size: 11px;
+                color: #7E191B;
+                margin-top: 5px;
+            }
+            .feeds-temporal article img {
+                width: 100%;
+                min-height: 130px;
+                max-height: 130px;
+                margin-top: 10px;
+             }
+             .feeds-temporal article p {
+                  font-size: 12px;
+             }
+             .feeds-temporal article a {
+                  font-size: 12px;
+                  color: #F8971D;
+             }
+             .horizontal{
+                 position: absolute;
+                top: 50%;
+                height: 36px;
+                width: 36px;
+                background-color: #F8911D;
+                background: #F8911D;
+                margin-top: -18px;
+                overflow: visible !important;
+                color: #FFFFFF;
+                font-size: 30px;
+                text-align: center;
+                text-decoration: none;
+             }
+             .prev{
+                 left: 10px;
+             }
+             .next{
+                 right: 10px;
+                   left: auto; 
+             }
+               
+    
+        </style>   
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script> 
+        <script type="text/javascript">
+            url = 'http://mediosuag.mx/feed';
+            counter = 0;
+            
+            $.ajax({
+                    url: document.location.protocol + '//ajax.googleapis.com/ajax/services/feed/load?v=1.0&num=10&callback=?&q=' + encodeURIComponent(url),
+                    dataType: 'json',
+                    success: function(data) {
+                                                //read each rss 
+                                                $.each(data.responseData.feed.entries, function(key, value){
+                                                      counter++;
+                                                      //get the formated date
+                                                      splitDate       = value.publishedDate.split(" "); 
+                                                      formatedDate    = splitDate[1] + "." + splitDate[2] + "." + splitDate[3];
+
+                                                      //get the first category
+                                                      firstCategory   = value.categories[0]; 
+                                                     
+                                                      //concat the formated date and category
+                                                      articleTitle    = (formatedDate + " | ").toUpperCase() + firstCategory;
+
+                                                      //get the image source and some attributes
+                                                      imageAttr       = " ";  
+                                                      splitContent    = value.content.split("<img");
+                                                      imageTag        = splitContent[1];
+                                                      if( typeof(imageTag) != "undefined" ){
+                                                          splitImgTag = imageTag.split(">");
+                                                          infoImage   = splitImgTag[0];
+                                                          imageWSizes = infoImage.split("width");
+                                                          imageAttr   = imageWSizes[0];
+                                                       }
+
+                                                       //get the tittle
+                                                       title = value.title;
+
+                                                       //get the description
+                                                       description    = value.contentSnippet;
+
+                                                       //get the link
+                                                       link  =  value.link;
+
+                                                      $('#feeds-content').append("<article class='rss-content'><span class='article-title'><br>" + articleTitle + "</span><img " +  imageAttr + " /> <strong> " +  title +  "</strong> <p>" + description + "</p> <a href='" +  link + "' >Más Información</a>  </article>");
+
+                                            });   //end each
+                    }, //end success
+                    error: function(){
+                          console.log('error trying read rss');
+                    }
+                });
+        </script>
+    
+    </head>
+    <body>
+         <div class="feeds-temporal">
+            <div class="feeds-tittle" >
+                <span>Noticias UAG</span>
+                <a class="feeds-right" >Ir a Medios UAG</a>
+            </div>
+            <div class="feeds-content" id="feeds-content"></div>
+            <a class="horizontal prev" href="#">
+                <span> &lt; </span>
+            </a>
+             <a class="horizontal next" href="#">
+                <span> > </span>
+            </a>
+        </div>
+    </body>   
+</html>
