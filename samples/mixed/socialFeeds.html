@@ -15,8 +15,7 @@ and open the template in the editor.
 
 
         <style>
-
-            .dcsns-toolbar2 {
+     .dcsns-toolbar2 {
                 position: relative !important;;
                 border-radius: 5px !important;;
                 -webkit-border-radius: 5px !important;;
@@ -53,6 +52,8 @@ and open the template in the editor.
                 color: #7E191B;
                 text-align: right;
                 margin-right: 10px;
+                font-size: 15px;
+                font-weight: normal;
             }
             .social-stream a:hover{
                 color: #7E191B;
@@ -72,7 +73,7 @@ and open the template in the editor.
             .social-stream article p {
                 font-size: 11px;
             }     
-            .social-stream li{
+            .social-stream .option-set li{
 
                 display: inline-block;
                 background: none;
@@ -87,13 +88,72 @@ and open the template in the editor.
                 margin-top: -20px;
                 margin-right: 1%;
                 margin-bottom: 0px;
-                margin-left: 1%;
+                margin-left: 4%;
+            }
+            #social-icons
+            {
+                width: 32%;
+margin: -14px -30px 0 0;
+min-height: 200px;
+float: right;
+
+              background: -moz-linear-gradient(left,  rgba(214,214,214,1) 0%, rgba(210,210,210,0.76) 9%, rgba(251,252,229,0) 67%, rgba(254,255,232,0) 73%); /* FF3.6+ */
+background: -webkit-gradient(linear, left top, right top, color-stop(0%,rgba(214,214,214,1)), color-stop(9%,rgba(210,210,210,0.76)), color-stop(67%,rgba(251,252,229,0)), color-stop(73%,rgba(254,255,232,0))); /* Chrome,Safari4+ */
+background: -webkit-linear-gradient(left,  rgba(214,214,214,1) 0%,rgba(210,210,210,0.76) 9%,rgba(251,252,229,0) 67%,rgba(254,255,232,0) 73%); /* Chrome10+,Safari5.1+ */
+background: -o-linear-gradient(left,  rgba(214,214,214,1) 0%,rgba(210,210,210,0.76) 9%,rgba(251,252,229,0) 67%,rgba(254,255,232,0) 73%); /* Opera 11.10+ */
+background: -ms-linear-gradient(left,  rgba(214,214,214,1) 0%,rgba(210,210,210,0.76) 9%,rgba(251,252,229,0) 67%,rgba(254,255,232,0) 73%); /* IE10+ */
+background: linear-gradient(to right,  rgba(214,214,214,1) 0%,rgba(210,210,210,0.76) 9%,rgba(251,252,229,0) 67%,rgba(254,255,232,0) 73%); /* W3C */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#d6dbbf', endColorstr='#00feffe8',GradientType=1 ); /* IE6-9 */
+
             }
             .social-stream ul, ol {
                 padding: 0;
                 margin: 20px 0 10px 30px;
             }
-        </style>    
+            #dcsns-filter  > li a
+            {
+                width:45px;
+                height:45px;
+                display:block;
+                border-radius: 25px;
+            }
+            #dcsns-filter  > li.f-facebook a{
+                
+            background: url("http://uag.desarrollowp.mx/assets/img/site/social/facebook_off.png") no-repeat;
+            }
+            #dcsns-filter  > li.f-youtube a{
+                
+            background: url("http://uag.desarrollowp.mx/assets/img/site/social/youtube_off.png") no-repeat;
+            }
+            #dcsns-filter  > li.f-twitter a{
+                
+            background: url("http://uag.desarrollowp.mx/assets/img/site/social/twitter_off.png") no-repeat;
+            }
+            
+            
+            #dcsns-filter  > li.f-facebook a:hover{
+                
+            background: url("http://uag.desarrollowp.mx/assets/img/site/social/facebook.png") no-repeat;
+            }
+            #dcsns-filter  > li.f-youtube a:hover{
+                
+            background: url("http://uag.desarrollowp.mx/assets/img/site/social/youtube.png") no-repeat;
+            }
+            #dcsns-filter  > li.f-twitter a:hover{
+                
+            background: url("http://uag.desarrollowp.mx/assets/img/site/social/twitter.png") no-repeat;
+            }
+            
+            #dcsns-filter  > li a img
+            {
+                width: 50px;
+                
+                display: block;
+                margin: auto -3px;
+                max-width: 110%;
+            }
+
+</style>   
         <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
         <script type="text/javascript">
             
@@ -156,7 +216,7 @@ and open the template in the editor.
                     error: function(){
                           console.log('error trying read rss');
                     }
-                }); //en jquery ajax
+                }); //end jquery ajax
                 
                 
                 $(".prev").click(function() {
@@ -225,13 +285,21 @@ and open the template in the editor.
             </div>
                 <!-- end rss -->
             <div class="row">
-                <div class="social-stream span9">
+                 <div class="social-stream span9">
                     <div class="row">
+                        
                         <div class="social-stream-tittle span9">
-                            <a class="social-stream-right span3">Ir a UAG Social Media</a>                        
+                            <a class="social-stream-right span3">Ir a <b>UAG</b> Social Media</a>                        
                         </div>
                         <div class="span9">
                             <div class="row"  id="social-content">
+                                <ul class="social-nav">
+        
+                                        <li id="social-prev" class="prev"><a href="#prev">Previous</a></li>
+            
+                                        <li id="social-next" class="next"><a href="#next">Next</a></li>
+            
+                                </ul>
                                 <article id="article-1" class="social-stream-content span3">
                                     <span class="article-title"><br>
                                         HACE 12 HORAS
@@ -254,53 +322,22 @@ and open the template in the editor.
                                     </p>
                                     <a href="#">Ver</a>
                                 </article>
-                                <article id="article-3" class="social-stream-content span3">
+                                <article id="social-icons" class="social-stream-content span3">
                                     <ul id="dcsns-filter" class="option-set filter">
                                         <li class="active f-facebook">
                                             <a href="#filter" rel="facebook" data-group="dc-filter" data-filter=".dcsns-facebook">
-                                                <img src="http://www.designchemical.com/blog/wp-content/themes/dc2011/dcsns/images/dcsns-light-1/facebook.png" alt="">
+                                                
                                             </a>
                                         </li>
-                                        <li class="active f-twitter">
+                                        <li class="f-twitter">
                                             <a href="#filter" rel="twitter" data-group="dc-filter" data-filter=".dcsns-twitter">
-                                                <img src="http://www.designchemical.com/blog/wp-content/themes/dc2011/dcsns/images/dcsns-light-1/twitter.png" alt="">
                                             </a>
                                         </li>
-                                        <li class="active f-google">
-                                            <a href="#filter" rel="google" data-group="dc-filter" data-filter=".dcsns-google">
-                                                <img src="http://www.designchemical.com/blog/wp-content/themes/dc2011/dcsns/images/dcsns-light-1/google.png" alt="">
-                                            </a>
-                                        </li>
-                                        <li class="active f-youtube">
+                                        <li class="f-youtube">
                                             <a href="#filter" rel="youtube" data-group="dc-filter" data-filter=".dcsns-youtube">
-                                                <img src="http://www.designchemical.com/blog/wp-content/themes/dc2011/dcsns/images/dcsns-light-1/youtube.png" alt="">
                                             </a>
                                         </li>
-                                        <li class="active f-flickr">
-                                            <a href="#filter" rel="flickr" data-group="dc-filter" data-filter=".dcsns-flickr">
-                                                <img src="http://www.designchemical.com/blog/wp-content/themes/dc2011/dcsns/images/dcsns-light-1/flickr.png" alt="">
-                                            </a>
-                                        </li>
-                                        <li class="active f-delicious">
-                                            <a href="#filter" rel="delicious" data-group="dc-filter" data-filter=".dcsns-delicious">
-                                                <img src="http://www.designchemical.com/blog/wp-content/themes/dc2011/dcsns/images/dcsns-light-1/delicious.png" alt="">
-                                            </a>
-                                        </li>
-                                        <li class="active f-pinterest">
-                                            <a href="#filter" rel="pinterest" data-group="dc-filter" data-filter=".dcsns-pinterest">
-                                                <img src="http://www.designchemical.com/blog/wp-content/themes/dc2011/dcsns/images/dcsns-light-1/pinterest.png" alt="">
-                                            </a>
-                                        </li>
-                                        <li class="active f-rss">
-                                            <a href="#filter" rel="rss" data-group="dc-filter" data-filter=".dcsns-rss">
-                                                <img src="http://www.designchemical.com/blog/wp-content/themes/dc2011/dcsns/images/dcsns-light-1/rss.png" alt="">
-                                            </a>
-                                        </li>
-                                        <li class="active f-lastfm">
-                                            <a href="#filter" rel="lastfm" data-group="dc-filter" data-filter=".dcsns-lastfm">
-                                                <img src="http://www.designchemical.com/blog/wp-content/themes/dc2011/dcsns/images/dcsns-light-1/lastfm.png" alt="">
-                                            </a>
-                                        </li>
+                                        
                                     </ul>
                                 </article>
                             </div><!-- end social content -->

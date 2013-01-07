@@ -1,32 +1,271 @@
-<script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
-<script>
-$(document).ready(function() {
-  
-    // twitter id
-    var user  = 'isabelpalomar';
-    // number of tweets
-    var count = 10;
-      
-    // using jquery built in get json method with twitter api
+<!-- social -->
+<!DOCTYPE html>
+<html>
+    <head>
+        <title></title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <link href="http://fonts.googleapis.com/css?family=Lato:100,300,400,700,900" rel="stylesheet" type="text/css">
+        <link rel="stylesheet" type="text/css" media="all" href="http://uag.desarrollowp.mx/wp-content/themes/roots/assets/css/bootstrap.css">
+        <link rel="stylesheet" type="text/css" media="all" href="http://uag.desarrollowp.mx/wp-content/themes/roots/style.css" />
+        <link rel="stylesheet" type="text/css" media="all" href="http://www.designchemical.com/blog/wp-content/themes/dc2011/dcsns/css/dcsns_light.css">
+        <link rel="stylesheet" type="text/css" media="all" href="http://uag.desarrollowp.mx/wp-content/themes/roots/feed.css">
+        <style>
+             .dcsns-toolbar2 {
+                        position: relative !important;;
+                        border-radius: 5px !important;;
+                        -webkit-border-radius: 5px !important;;
+                        -moz-border-radius: 5px !important;;
+                    }
+                    .dcsns {
+                        background: #E5E5E5;
+                        border-radius: 0px !important;
+                        -webkit-border-radius: 0px;
+                        color: #444;
+                        list-style: none outside none;
+                        margin-top: 40px;
+                    }
 
-    $.getJSON('https://api.twitter.com/1/statuses/user_timeline.json?screen_name=' + user + '&count=' + (count + 1) + '&callback=?', function(data)      {
-    	console.log(data);
-          
-        // result returned
-        var tweet = data[0].text;
-        console.log(tweet);
-      
-        // process links and reply
-        tweet = tweet.replace(/(\b(https?|ftp|file):\/\/[-A-Z0-9+&@#\/%?=~_|!:,.;]*[-A-Z0-9+&@#\/%=~_|])/ig, function(url) {
-            return '<a href="'+url+'">'+url+'</a>';
-        }).replace(/B@([_a-z0-9]+)/ig, function(reply) {
-            return  reply.charAt(0)+'<a href="http://twitter.com/'+reply.substring(1)+'">'+reply.substring(1)+'</a>';
-        });
-      
-        // output the result
-          console.log(tweet);
-    }); 
-      
-});
+                    /*NUEVOS CSS PARA AGREGAR*/
 
-</script>
+                    .social-stream {
+                        background-color: #EAECEE;
+                        font-family: 'Lato';
+                        position: relative;
+                        margin-top: 30px;
+                    }
+                    .social-stream-tittle {
+                        background-color: white !important ;
+                        background-repeat: no-repeat;
+                        background-color: transparent;
+                        padding: 10px 0px;
+
+                        color: white;
+                        font-size: 17.5px;
+                    }
+                    .social-stream-right {
+                        float: right;
+                        color: #7E191B;
+                        text-align: right;
+                        margin-right: 10px;
+                        font-size: 15px;
+                        font-weight: normal;
+                    }
+                    .social-stream a:hover{
+                        color: #7E191B;
+                        text-decoration: underline;
+
+                    }
+                    #social-content {
+                        padding: 2% 8% 0 10%;
+                    }
+                    .social-stream strong{
+                        color: #F8971D;
+                    }
+                    .social-stream article a {
+                        font-size: 13px;
+                        color: #F8971D;
+                    }  
+                    .social-stream article p {
+                        font-size: 11px;
+                    }     
+                    .social-stream .option-set li{
+
+                        display: inline-block;
+                        background: none;
+                        padding: 0;
+                        margin: 0 2px 0 0;
+                        height: 50px;
+
+                    }
+                    .social-stream-content {
+                        width: 31%;
+                        margin: 0 1%;
+                        margin-top: -20px;
+                        margin-right: 1%;
+                        margin-bottom: 0px;
+                        margin-left: 4%;
+                    }
+                    #social-icons
+                    {
+                        width: 32%;
+                        margin: -14px -30px 0 0;
+                        min-height: 200px;
+                        float: right;
+                        background: -moz-linear-gradient(left,  rgba(214,214,214,1) 0%, rgba(210,210,210,0.76) 9%, rgba(251,252,229,0) 67%, rgba(254,255,232,0) 73%); /* FF3.6+ */
+        background: -webkit-gradient(linear, left top, right top, color-stop(0%,rgba(214,214,214,1)), color-stop(9%,rgba(210,210,210,0.76)), color-stop(67%,rgba(251,252,229,0)), color-stop(73%,rgba(254,255,232,0))); /* Chrome,Safari4+ */
+        background: -webkit-linear-gradient(left,  rgba(214,214,214,1) 0%,rgba(210,210,210,0.76) 9%,rgba(251,252,229,0) 67%,rgba(254,255,232,0) 73%); /* Chrome10+,Safari5.1+ */
+        background: -o-linear-gradient(left,  rgba(214,214,214,1) 0%,rgba(210,210,210,0.76) 9%,rgba(251,252,229,0) 67%,rgba(254,255,232,0) 73%); /* Opera 11.10+ */
+        background: -ms-linear-gradient(left,  rgba(214,214,214,1) 0%,rgba(210,210,210,0.76) 9%,rgba(251,252,229,0) 67%,rgba(254,255,232,0) 73%); /* IE10+ */
+        background: linear-gradient(to right,  rgba(214,214,214,1) 0%,rgba(210,210,210,0.76) 9%,rgba(251,252,229,0) 67%,rgba(254,255,232,0) 73%); /* W3C */
+        filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#d6dbbf', endColorstr='#00feffe8',GradientType=1 ); /* IE6-9 */
+
+                    }
+                    .social-stream ul, ol {
+                        padding: 0;
+                        margin: 20px 0 10px 30px;
+                    }
+                    #dcsns-filter  > li a
+                    {
+                        width:45px;
+                        height:45px;
+                        display:block;
+                        border-radius: 25px;
+                    }
+                    #dcsns-filter  > li.f-facebook a{
+                        
+                    background: url("http://uag.desarrollowp.mx/assets/img/site/social/facebook_off.png") no-repeat;
+                    }
+                    #dcsns-filter  > li.f-youtube a{
+                        
+                    background: url("http://uag.desarrollowp.mx/assets/img/site/social/youtube_off.png") no-repeat;
+                    }
+                    #dcsns-filter  > li.f-twitter a{
+                        
+                    background: url("http://uag.desarrollowp.mx/assets/img/site/social/twitter_off.png") no-repeat;
+                    }
+                    
+                    
+                    #dcsns-filter  > li.f-facebook a:hover{
+                        
+                    background: url("http://uag.desarrollowp.mx/assets/img/site/social/facebook.png") no-repeat;
+                    }
+                    #dcsns-filter  > li.f-youtube a:hover{
+                        
+                    background: url("http://uag.desarrollowp.mx/assets/img/site/social/youtube.png") no-repeat;
+                    }
+                    #dcsns-filter  > li.f-twitter a:hover{
+                        
+                    background: url("http://uag.desarrollowp.mx/assets/img/site/social/twitter.png") no-repeat;
+                    }
+                    
+                    #dcsns-filter  > li a img
+                    {
+                        width: 50px;
+                        
+                        display: block;
+                        margin: auto -3px;
+                        max-width: 110%;
+                    }
+
+        </style>
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+		<script type="text/javascript">
+			jQuery(document).ready(function() {
+			  
+			    // twitter id
+			    var user        = 'UAG_Oficial';
+			    // number of tweets
+			    var count       = 10;
+			    // counter
+			    var counter     = 0;
+			    //idsArticles
+			    var idsArticles = 1;
+			      
+			    // using jquery built in get json method with twitter api
+			    jQuery.getJSON('https://api.twitter.com/1/statuses/user_timeline.json?screen_name=' + user + '&count=' + (count ) + '&callback=?', function(data){
+			    			 jQuery.each(data, function(key, value){
+			    			 	counter ++;
+			    			 	//get the hours 
+			    			 	hours 		 = 12;
+
+			    			 	//get the account name
+			    			 	accountName  = value.user.name;
+			    			 	//console.log(accountName);
+
+			    			 	//get the tweet
+			    			 	tweet = value.text ;
+			    			 	// process links and reply
+						        tweet = tweet.replace(/(\b(https?|ftp|file):\/\/[-A-Z0-9+&@#\/%?=~_|!:,.;]*[-A-Z0-9+&@#\/%=~_|])/ig, function(url) {
+						            return '<a href="'+url+'">'+url+'</a>';
+						        }).replace(/B@([_a-z0-9]+)/ig, function(reply) {
+						            return  reply.charAt(0)+'<a href="http://twitter.com/'+reply.substring(1)+'">'+reply.substring(1)+'</a>';
+						        });
+						        //console.log(tweet);
+
+						        //get the tweet URL
+						        //tweetURL = 	
+
+						        if(counter <= 2){
+						        	 jQuery('#social-content').append("<article style='min-height: 172px' id='article-" + counter + "' class='social-stream-content span3'><span class='article-title'><br> HACE " + hours+ " HORAS</span><br> <strong> " +  accountName +  "</strong> <p>" + tweet + "</p> <a href='http://www.twitter.com/" +  user + "' >Ver</a>  </article>");  
+						        	}
+						        else if (counter == 3){
+						        		jQuery('#social-content').append('<article id="social-icons" class="social-stream-content span3"><ul id="dcsns-filter" class="option-set filter"> <li class="active f-facebook"><a href="#filter" rel="facebook" data-group="dc-filter" data-filter=".dcsns-facebook"></a> </li><li class="f-twitter"><a href="#filter" rel="twitter" data-group="dc-filter" data-filter=".dcsns-twitter"></a> </li><li class="f-youtube"><a href="#filter" rel="youtube" data-group="dc-filter" data-filter=".dcsns-youtube"> </a></li> </ul></article>');
+						        		jQuery('#social-content').append("<article style='min-height: 172px; display:none;' id='article-" + counter + "' class='social-stream-content span3'><span class='article-title'><br> HACE " + hours+ " HORAS</span><br> <strong> " +  accountName +  "</strong> <p>" + tweet + "</p> <a href='http://www.twitter.com/" +  user + "' >Ver</a>  </article>"); 
+						        }
+						        else{
+						        	jQuery('#social-content').append("<article style='min-height: 172px; display:none;' id='article-" + counter + "' class='social-stream-content span3'><span class='article-title'><br> HACE " + hours+ " HORAS</span><br> <strong> " +  accountName +  "</strong> <p>" + tweet + "</p> <a href='http://www.twitter.com/" +  user + "' >Ver</a>  </article>");  
+						        }
+
+			    			  });   //end each
+			    }); // end get JSON
+
+				/**
+				* Events 
+				*/
+				jQuery(".prev").click(function() {
+                    slide('previous');
+                    
+                });
+                jQuery(".next").click(function() {
+                    slide('next');
+                });
+
+                /**
+                * Function slide, show or hide the articles depending the user request
+                */
+                function slide(side){ 
+                    if(side == 'next'){ // show the next articles
+                        if(idsArticles < counter-1){
+                            var end = idsArticles + 1;
+                            jQuery('#social-content').hide();
+                            for (var i = idsArticles; i <= end ; i++ ) { 
+                                    jQuery('#article-' + i).hide();
+                                    jQuery('#article-' + (i+2)).show();
+                                    idsArticles++;
+                            } 
+                            jQuery('#social-content').fadeIn();
+                        }                                                  
+                    }
+                    else if(side == 'previous'){ //show the last articles
+                        if(idsArticles > 1){
+                            var end = idsArticles;
+                            jQuery('#social-content').hide();
+                            for (var i = (idsArticles+1) ; i >= end ; i--){ 
+                                   jQuery('#article-' + i).hide();
+                                   jQuery('#article-' + (i-2)).show();
+                                    idsArticles--;
+                            }
+                            jQuery('#social-content').fadeIn();
+                        }
+                    }        
+                } // end function slide     	
+
+			      
+			}); // end ready function
+		</script>
+		<body>
+        	<div class="container">
+            	<!-- social feeds;) -->
+            	<div class="row">
+	                <div class="social-stream span9">
+	                    <div class="row">
+	                        
+	                        <div class="social-stream-tittle span9">
+	                            <a class="social-stream-right span3">Ir a <b>UAG</b> Social Media</a>                        
+	                        </div>
+	                        <div class="span9">
+	                            <div class="row"  id="social-content">
+	                                <ul class="social-nav">			
+	                                        <li id="social-prev" class="prev"><a href="#prev">Previous</a></li>
+	                                        <li id="social-next" class="next"><a href="#next">Next</a></li>
+	                                </ul>
+	                                <!-- articles here -->
+	                            </div><!-- end social content -->
+	                        </div> <!-- end span9 -->
+	                    </div> <!-- end row -->   
+	                </div><!-- end social stream -->
+				</div>	<!-- end row -->
+			</div><!-- end container-->  
+		</body> <!-- end  body-->    
+</html>
+
