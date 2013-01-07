@@ -3,14 +3,19 @@
 <script>
 $(document).ready(function() {
   
-    // set your twitter id
-    var user = 'quenesswebblog';
+    // twitter id
+    var user  = 'isabelpalomar';
+    // number of tweets
+    var count = 10;
       
-    // using jquery built in get json method with twitter api, return only one result
-    $.getJSON('http://twitter.com/statuses/user_timeline.json?screen_name=' + user + '&count=1&callback=?', function(data)      {
+    // using jquery built in get json method with twitter api
+
+    $.getJSON('https://api.twitter.com/1/statuses/user_timeline.json?screen_name=' + user + '&count=' + (count + 1) + '&callback=?', function(data)      {
+    	console.log(data);
           
         // result returned
         var tweet = data[0].text;
+        console.log(tweet);
       
         // process links and reply
         tweet = tweet.replace(/(\b(https?|ftp|file):\/\/[-A-Z0-9+&@#\/%?=~_|!:,.;]*[-A-Z0-9+&@#\/%=~_|])/ig, function(url) {
@@ -20,7 +25,7 @@ $(document).ready(function() {
         });
       
         // output the result
-        $("#tweet").html(tweet);
+          console.log(tweet);
     }); 
       
 });
