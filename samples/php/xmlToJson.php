@@ -1,7 +1,7 @@
 <?php
 
 /* This class help to convert any xml file (including kml..) to a beautiful Json Format :3
- * @isabelpalomar ;)
+ * isabelpalomar.com ;)
  * 21/01/2013
  */
 
